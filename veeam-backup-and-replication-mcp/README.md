@@ -116,6 +116,12 @@ VBR MCP Server provides a suite of tools for interacting with Veeam Backup & Rep
 | `get-repositories` | List backup repositories | `limit`, `skip`, `threshold` |
 | `get-proxies` | List backup proxies | `limit`, `skip` |
 | `get-backup-sessions` | List backup sessions | `limit`, `skip` |
+| `get-backup-objects` | List backup objects | `limit`, `skip` |
+| `get-restore-points` | List restore points | `id`, `limit`, `skip`, `filters` |
+| `get-protection-groups` | List protection groups | `limit`, `skip` |
+| `get-malware-events` | List malware detection events | `limit`, `skip` |
+| `get-config-backup` | Check configuration backup status | - |
+| `start-config-backup` | Start configuration backup | `confirmation` (boolean) |
 | `get-license-info` | Get license information | - |
 | `get-license-workloads` | Get licensed workloads | - |
 | `get-server-info` | Get VBR server information | - |
@@ -129,11 +135,16 @@ vbr-mcp-server/
 ├── vbr-mcp-server.js                   # Main server file
 ├── tools/                              # Tool implementations
 │   ├── auth-tool.js                    # Authentication tool
-│   ├── backup-proxies-tool.js          # Proxies tool
+│   ├── backup-objects.js               # Backup Objects tool
 │   ├── backup-proxies-tool.js          # Proxies tool
 │   ├── backup-repositories-tool.js     # Repositories tool
 │   ├── backup-sessions-tool.js         # Backup Sessions tool
-│   ├── server-info-tool.js             # Get some good server information tool
+│   ├── config-backup-tool.js           # Configuration Backup tool
+│   ├── license-tools.js                # License tools
+│   ├── malware-events.js               # Malware Events tool
+│   ├── protection-groups.js            # Protection Groups tool
+│   ├── restore-points.js               # Restore Points tool
+│   ├── server-info-tool.js             # Server Info tool
 ├── package.json
 ├── .env                                # Environment configuration (not in git)
 └── README.md
