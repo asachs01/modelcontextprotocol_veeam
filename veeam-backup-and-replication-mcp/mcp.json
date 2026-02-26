@@ -1,0 +1,61 @@
+{
+  "name": "vbr-mcp-server",
+  "version": "2.0.0",
+  "description": "MCP server for Veeam Backup & Replication REST API",
+  "transport": {
+    "stdio": {
+      "command": "node",
+      "args": ["dist/server.js"]
+    },
+    "http": {
+      "url": "http://localhost:3000/sse",
+      "command": "node",
+      "args": ["dist/server.js", "--transport", "http", "--port", "3000"]
+    }
+  },
+  "tools": [
+    "auth-vbr",
+    "get-server-info",
+    "get-backup-objects",
+    "get-proxies",
+    "get-repositories",
+    "get-backup-sessions",
+    "get-config-backup",
+    "start-config-backup",
+    "get-license-info",
+    "get-license-workloads",
+    "get-malware-events",
+    "get-protection-groups",
+    "get-restore-points"
+  ],
+  "env": {
+    "VBR_HOST": {
+      "description": "VBR server hostname or IP",
+      "required": false
+    },
+    "VBR_USERNAME": {
+      "description": "Username in domain\\user format",
+      "required": false
+    },
+    "VBR_PASSWORD": {
+      "description": "Password for VBR authentication",
+      "required": false,
+      "secret": true
+    },
+    "VBR_REJECT_UNAUTHORIZED": {
+      "description": "Set to 'true' to reject self-signed certificates",
+      "required": false,
+      "default": "false"
+    },
+    "VBR_ENABLE_NOTIFICATIONS": {
+      "description": "Enable push notifications via event polling (HTTP only)",
+      "required": false,
+      "default": "false"
+    },
+    "VBR_POLL_INTERVAL_MS": {
+      "description": "Polling interval in milliseconds for notifications",
+      "required": false,
+      "default": "30000"
+    }
+  }
+}
