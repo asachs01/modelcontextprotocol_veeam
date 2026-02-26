@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [core, vbr-mcp, vone-mcp, vspc-mcp, vro-mcp, k10-mcp]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build core (dependency)
+        if: matrix.package != 'core'
+        run: npm run build --workspace=packages/core
+
+      - name: Typecheck
+        run: npm run typecheck --workspace=packages/${{ matrix.package }}
+
+      - name: Lint
+        run: npm run lint --workspace=packages/${{ matrix.package }}
+
+      - name: Build
+        run: npm run build --workspace=packages/${{ matrix.package }}
+
+      - name: Test
+        run: npm run test --workspace=packages/${{ matrix.package }}

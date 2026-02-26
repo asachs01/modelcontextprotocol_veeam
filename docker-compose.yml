@@ -1,0 +1,40 @@
+services:
+  vbr-mcp:
+    build: packages/vbr-mcp
+    ports:
+      - "3000:3000"
+    env_file:
+      - packages/vbr-mcp/.env
+    restart: unless-stopped
+
+  vone-mcp:
+    build: packages/vone-mcp
+    ports:
+      - "3001:3000"
+    env_file:
+      - packages/vone-mcp/.env
+    restart: unless-stopped
+
+  vspc-mcp:
+    build: packages/vspc-mcp
+    ports:
+      - "3002:3000"
+    env_file:
+      - packages/vspc-mcp/.env
+    restart: unless-stopped
+
+  vro-mcp:
+    build: packages/vro-mcp
+    ports:
+      - "3003:3000"
+    env_file:
+      - packages/vro-mcp/.env
+    restart: unless-stopped
+
+  k10-mcp:
+    build: packages/k10-mcp
+    ports:
+      - "3004:3000"
+    env_file:
+      - packages/k10-mcp/.env
+    restart: unless-stopped

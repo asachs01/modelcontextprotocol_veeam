@@ -1,0 +1,37 @@
+{
+  "name": "@veeam-mcp/vone",
+  "version": "1.0.0",
+  "description": "MCP server for Veeam ONE REST API",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "vone-mcp-server": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "start:http": "node dist/server.js --transport http",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@veeam-mcp/core": "*",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "express": "^4.21.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "@eslint/js": "^9.0.0",
+    "typescript-eslint": "^8.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
