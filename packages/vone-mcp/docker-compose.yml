@@ -1,0 +1,8 @@
+services:
+  vone-mcp:
+    build: .
+    ports:
+      - "3001:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
